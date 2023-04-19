@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/presentation/Home/HomeView.dart';
+import 'package:mvvm/presentation/Home/home_view.dart';
 import 'package:mvvm/presentation/Profile/profile_view.dart';
+import 'package:mvvm/presentation/Table/table_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,7 @@ class _RootState extends State<Root> {
   int currentPage = 0;
   List<Widget> views = const [
     HomeView(),
+    TableView(),
     ProfileView(),
   ];
   @override
