@@ -38,9 +38,11 @@ class _LearnFlutterViewState extends State<LearnFlutterView> {
           const Divider(color: Colors.green),
           Container(
             color: Colors.blueGrey,
+            //width screen size
             width: double.infinity,
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.fromLTRB(10, 11, 12, 13),
+
             child: const Center(
               child: Text(
                 "This is a text Widget",
