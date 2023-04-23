@@ -10,6 +10,16 @@ class ClientPage extends StatefulWidget {
   State<ClientPage> createState() => _ClientPageState();
 }
 
+/// Representation of a tab item in the [ScaffoldWithBottomNavBar]
+class ScaffoldWithNavBarTabItem extends BottomNavigationBarItem {
+  const ScaffoldWithNavBarTabItem(
+      {required this.initialLocation, required Widget icon, String? label})
+      : super(icon: icon, label: label);
+
+  /// The initial location/path
+  final String initialLocation;
+}
+
 class _ClientPageState extends State<ClientPage> {
   static const tabs = [
     ScaffoldWithNavBarTabItem(
@@ -28,6 +38,7 @@ class _ClientPageState extends State<ClientPage> {
       label: 'Table',
     ),
   ];
+
   // getter that computes the current index from the current location,
   // using the helper method below
   int get _currentIndex => _locationToTabIndex(GoRouter.of(context).location);
@@ -61,14 +72,4 @@ class _ClientPageState extends State<ClientPage> {
       ),
     );
   }
-}
-
-/// Representation of a tab item in the [ScaffoldWithBottomNavBar]
-class ScaffoldWithNavBarTabItem extends BottomNavigationBarItem {
-  const ScaffoldWithNavBarTabItem(
-      {required this.initialLocation, required Widget icon, String? label})
-      : super(icon: icon, label: label);
-
-  /// The initial location/path
-  final String initialLocation;
 }

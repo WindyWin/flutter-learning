@@ -6,10 +6,12 @@ import 'package:mvvm/presentation/Login/login_view.dart';
 import 'package:mvvm/presentation/Table/table_view.dart';
 import 'package:provider/provider.dart';
 import "./router/router.dart";
+import 'ViewModels/course_view_model.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
+      ChangeNotifierProvider(create: (_) => CourseModelProvider()),
       ChangeNotifierProvider(create: (_) => AuthProvider()),
       // ChangeNotifierProvider(create: (_) => LoginProvider())
       ChangeNotifierProxyProvider<AuthProvider, UserProvider>(
