@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/presentation/Course/course_view_model.dart';
-
-import '../../model/Course.dart';
+import 'package:mvvm/ViewModels/course_view_model.dart';
 
 class CourseView extends StatefulWidget {
   const CourseView({Key? key}) : super(key: key);
@@ -15,8 +13,8 @@ class _CourseViewState extends State<CourseView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: StreamBuilder(
-        stream: _viewModel.courses,
+      child: FutureBuilder(
+        future: _viewModel.init(),
         builder: (context, snapshot) {
           List<Widget> widgets;
           if (!snapshot.hasError) {
