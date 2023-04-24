@@ -112,8 +112,12 @@ class _LearnFlutterViewState extends State<LearnFlutterView> {
                       isChecked = value;
                     })
                   }),
-          Image.network(
-              "https://arimotravels.com/wp-content/uploads/2021/03/random-drawing-generator-prompts.jpg.webp"),
+          Positioned(
+            top: 20,
+            left: 20,
+            child: Image.network(
+                "https://arimotravels.com/wp-content/uploads/2021/03/random-drawing-generator-prompts.jpg.webp"),
+          ),
         ]),
       ),
     );

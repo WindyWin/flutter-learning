@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mvvm/Common/custom_app_bar.dart';
+import 'package:mvvm/ViewModels/Auth.dart';
 import 'package:mvvm/ViewModels/UserProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -11,9 +13,11 @@ class ClientPage extends StatefulWidget {
 }
 
 /// Representation of a tab item in the [ScaffoldWithBottomNavBar]
-class ScaffoldWithNavBarTabItem extends BottomNavigationBarItem {
+class ScaffoldWithNavBarTabItem extends NavigationDestination {
   const ScaffoldWithNavBarTabItem(
-      {required this.initialLocation, required Widget icon, String? label})
+      {required this.initialLocation,
+      required Widget icon,
+      required String label})
       : super(icon: icon, label: label);
 
   /// The initial location/path
@@ -60,15 +64,19 @@ class _ClientPageState extends State<ClientPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (context.read<UserProvider>().user == null) {
-      context.go('/login');
-    }
     return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(GoRouter.of(context).location),
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+          ]),
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        items: tabs,
-        onTap: (index) => _onItemTapped(context, index),
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.white,
+        selectedIndex: _currentIndex,
+        destinations: tabs,
+        onDestinationSelected: (index) => _onItemTapped(context, index),
       ),
     );
   }

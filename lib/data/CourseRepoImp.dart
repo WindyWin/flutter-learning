@@ -8,8 +8,8 @@ class CourseRepoImp with CourseRepo {
   // CourseRepoImp() {
   //   weatherDao.open();
   // }
-  void init() async {
-    await weatherDao.open();
+  Future init() async {
+    return await weatherDao.open();
   }
 
   @override

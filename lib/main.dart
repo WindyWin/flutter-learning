@@ -6,7 +6,8 @@ import 'package:mvvm/presentation/Login/login_view.dart';
 import 'package:mvvm/presentation/Table/table_view.dart';
 import 'package:provider/provider.dart';
 import "./router/router.dart";
-import 'ViewModels/course_view_model.dart';
+import 'ViewModels/CourseProvider.dart';
+import 'model/Course.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -17,6 +18,7 @@ void main() {
       ChangeNotifierProxyProvider<AuthProvider, UserProvider>(
         create: (_) => UserProvider(),
         update: (context, auth, pre) => pre!..update(auth),
+        lazy: true,
       )
     ],
     child: const MyApp(),
@@ -55,43 +57,5 @@ class MyApp extends StatelessWidget {
     //   home: const Root(),
     //   routes: _router,
     // );
-  }
-}
-
-class Root extends StatefulWidget {
-  const Root({Key? key}) : super(key: key);
-
-  @override
-  _RootState createState() => _RootState();
-}
-
-class _RootState extends State<Root> {
-  int currentPage = 0;
-  List<Widget> views = const [LoginView(), CourseView(), TableView()];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("Hello world"),
-      // ),
-      body: views[currentPage],
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => {debugPrint("home pressed")},
-      //   child: const Icon(Icons.add),
-      // ),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-          NavigationDestination(icon: Icon(Icons.table_chart), label: "table"),
-          NavigationDestination(icon: Icon(Icons.person), label: "profile"),
-        ],
-        onDestinationSelected: (int index) => {
-          setState(() {
-            currentPage = index;
-          })
-        },
-        selectedIndex: currentPage,
-      ),
-    );
   }
 }

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mvvm/presentation/Home/HomeView.dart';
 import 'package:mvvm/presentation/LearnFlutter/learn_flutter_view.dart';
 import 'package:mvvm/presentation/Login/login_view.dart';
+import 'package:mvvm/presentation/Table/components/table_basic_example.dart';
 import 'package:mvvm/router/ProtectedRouter.dart';
 
 import '../presentation/Course/course_view.dart';
@@ -40,7 +41,7 @@ final GoRouter router = GoRouter(
               GoRoute(
                 path: 'table',
                 builder: (BuildContext context, GoRouterState state) {
-                  return const TableView();
+                  return TableBasicsExample();
                 },
               ),
               GoRoute(

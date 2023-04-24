@@ -26,8 +26,7 @@ class _LoginViewState extends State<LoginView> {
                 direction: Axis.vertical,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Image.asset("image/download.jpg"),
-
+                  Image.asset("assets/image/download.jpg"),
                   Container(
                     margin: const EdgeInsets.only(bottom: 20),
                     child: SizedBox(
@@ -78,7 +77,9 @@ class _LoginViewState extends State<LoginView> {
 
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content: Text('Đang xử lý yêu cầu')),
+                                content: Text('Đang xử lý yêu cầu'),
+                                duration: Duration(milliseconds: 500),
+                              ),
                             );
                             final result =
                                 await context.read<AuthProvider>().onLogin();

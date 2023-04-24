@@ -8,9 +8,15 @@ class UserProvider with ChangeNotifier {
   User? get user => _user;
 
   void update(AuthProvider auth) {
-    if (auth.token != null) {
+    if (auth.token == "1") {
       _user = User("Nguyễn Văn A");
+      debugPrint("UserProvider: ${_user?.username}");
+    } else {
+      _user = null;
+      debugPrint("UserProvider: ${null}");
     }
+
+    debugPrint("UserProvider: ${_user?.username}");
     notifyListeners();
   }
 }

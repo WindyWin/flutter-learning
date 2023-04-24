@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mvvm/presentation/LearnFlutter/learn_flutter_view.dart';
 import 'package:provider/provider.dart';
 
+import '../../ViewModels/Auth.dart';
 import '../../ViewModels/UserProvider.dart';
 
 class HomeView extends StatelessWidget {
@@ -13,7 +14,8 @@ class HomeView extends StatelessWidget {
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Hello ${context.read<UserProvider>().user!.username}"),
+        Text("Token ${context.read<AuthProvider>().token}"),
+        Text("Hello ${context.read<UserProvider>().user?.username}"),
         ElevatedButton(
             onPressed: () {
               Navigator.of(context)
