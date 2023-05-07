@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/presentation/Home/HomeView.dart';
+import 'package:mvvm/presentation/Login/login_view.dart';
 import 'package:mvvm/presentation/Profile/profile_view.dart';
 
 void main() {
@@ -30,10 +31,7 @@ class Root extends StatefulWidget {
 
 class _RootState extends State<Root> {
   int currentPage = 0;
-  List<Widget> views = const [
-    HomeView(),
-    ProfileView(),
-  ];
+  List<Widget> views = const [HomeView(), ProfileView(), LoginView()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
